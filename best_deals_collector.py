@@ -711,7 +711,7 @@ def scheduled_task():
 if __name__ == "__main__":
     # Schedule the parsing at 9:00 AM and 9:00 PM
     schedule.every().day.at("14:47").do(scheduled_task)
-    schedule.every().day.at("22:41").do(scheduled_task)
+    schedule.every().day.at("17:20").do(scheduled_task)
 
     while True:
         schedule.run_pending()

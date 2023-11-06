@@ -9,9 +9,10 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.markdown import hbold, hlink
 
-with open('credentials.txt',
-          'r', encoding='utf-8-sig') as psw:
-    TOKEN = psw.read().rstrip()
+#with open('credentials.txt', 'r', encoding='utf-8-sig') as psw:
+    #TOKEN = psw.read().rstrip()
+
+TOKEN = TELEGRAM_TOKEN
 
 dp = Dispatcher()
 bot = Bot(token=TOKEN, parse_mode='html')
