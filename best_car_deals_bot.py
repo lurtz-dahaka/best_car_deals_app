@@ -11,7 +11,7 @@ from aiogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.markdown import hbold, hlink
 from boto.s3.connection import S3Connection
 
-token = S3Connection(os.environ['TELEGRAM_TOKEN'])
+token = '6587443507:AAG67yXL8Q_IYWEi0DK8LCySSwsJe_0AxF4'
 
 dp = Dispatcher()
 bot = Bot(token=token, parse_mode='html')
