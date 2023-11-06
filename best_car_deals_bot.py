@@ -1,3 +1,4 @@
+import os
 import asyncio
 import logging
 import sys
@@ -8,11 +9,9 @@ from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.markdown import hbold, hlink
+from boto.s3.connection import S3Connection
 
-#with open('credentials.txt', 'r', encoding='utf-8-sig') as psw:
-    #TOKEN = psw.read().rstrip()
-
-TOKEN = TELEGRAM_TOKEN
+TOKEN = S3Connection(os.environ['TELEGRAM_TOKEN'])
 
 dp = Dispatcher()
 bot = Bot(token=TOKEN, parse_mode='html')
