@@ -52,7 +52,7 @@ async def send_car_ads(message: types.Message):
 
 async def main() -> None:
     # Initialize Bot instance with a default parse mode which will be passed to all API calls
-    bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
+    bot = Bot(token=token, parse_mode=ParseMode.HTML)
     # And the run events dispatching
     await dp.start_polling(bot)
 
