@@ -11,10 +11,9 @@ from aiogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.markdown import hbold, hlink
 from boto.s3.connection import S3Connection
 
-token = '6587443507:AAG67yXL8Q_IYWEi0DK8LCySSwsJe_0AxF4'
 
 dp = Dispatcher()
-bot = Bot(token=token, parse_mode='html')
+bot = Bot(token=os.environ.get('TELEGRAM_TOKEN'), parse_mode='html')
 
 
 @dp.message(CommandStart())
@@ -52,7 +51,7 @@ async def send_car_ads(message: types.Message):
 
 async def main() -> None:
     # Initialize Bot instance with a default parse mode which will be passed to all API calls
-    bot = Bot(token=token, parse_mode=ParseMode.HTML)
+    bot = Bot(token=os.environ.get('TELEGRAM_TOKEN'), parse_mode=ParseMode.HTML)
     # And the run events dispatching
     await dp.start_polling(bot)
 

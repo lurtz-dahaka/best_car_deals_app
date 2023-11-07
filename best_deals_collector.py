@@ -1,3 +1,4 @@
+import os
 import threading
 import schedule
 import time
@@ -6,14 +7,20 @@ import numpy as np
 import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
+#from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 import re
 from statistics import mean
 
 
 def get_best_ads():
-    browser = webdriver.Chrome(ChromeDriverManager().install())
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--remote-debugging-port=9222")
+    browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
     url = f'https://www.nettiauto.com'
     browser.get(url)
     all_makes = browser.find_elements(By.CSS_SELECTOR, '#srch_id_make')[0].text
@@ -23,9 +30,13 @@ def get_best_ads():
 
     data_dict = {}
     data = pd.DataFrame(data_dict)
-    browser = webdriver.Chrome(ChromeDriverManager().install())
-    options = webdriver.ChromeOptions()
-    options.add_argument("--start-maximized")
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--remote-debugging-port=9222")
+    browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
     url = f'https://www.nettiauto.com/en/vaihtoautot?new=H&sortCol=price&ord=ASC&id_country[]=73'
     browser.get(url)
@@ -37,8 +48,13 @@ def get_best_ads():
 
     for page in range(1, number_of_pages + 1):
 
-        browser = webdriver.Chrome(ChromeDriverManager().install())
-        options.add_argument("--start-maximized")
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--remote-debugging-port=9222")
+        browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
         url = f'https://www.nettiauto.com/vaihtoautot?page={page}'
         browser.get(url)
