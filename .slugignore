@@ -2,5 +2,7 @@ data_231104.csv
 data_clean.csv
 data_final.csv
 data_full.csv
+data_clean_outliers.csv
+data_clean_outliers_new.csv
 Car_prediction.ipynb
 best_deals.ipynb
